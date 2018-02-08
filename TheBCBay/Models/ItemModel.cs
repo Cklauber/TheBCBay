@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TheBCBay.Models
 {
-    public class ProductModel
+    public class ItemModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal CurrentPrice { get; set; }

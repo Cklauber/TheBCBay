@@ -1,0 +1,22 @@
+﻿@model TheBCBay.Models.ItemModel
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>This is our sample</title>
+</head>
+<body>
+    <div>
+        <h1>@Model.Id - @Model.Title</h1>
+    </div>
+    <div>
+        Description: @Model.Description
+        
+        Price = @Model.CurrentPrice
+
+        Being sold by @Model.UsrId
+
+        <p>@Model.StartDate</p>
+    </div>
+</body>
+</html>
