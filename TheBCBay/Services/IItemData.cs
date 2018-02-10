@@ -6,9 +6,9 @@ using TheBCBay.Models;
 
 namespace TheBCBay.Services
 {
-    interface IItemData
+    public interface IItemData
     {
-        public IEnumerable<ItemModel> GetAll();
+        IEnumerable<ItemModel> GetAll();
         ItemModel Get(int id);
     }
 }

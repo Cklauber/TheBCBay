@@ -1,4 +1,4 @@
-﻿@model TheBCBay.Models.ItemModel
+﻿@model IEnumerable<TheBCBay.Models.ItemModel>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -6,17 +6,15 @@
     <title>This is our sample</title>
 </head>
 <body>
-    <div>
-        <h1>@Model.Id - @Model.Title</h1>
-    </div>
-    <div>
-        Description: @Model.Description
-        
-        Price = @Model.CurrentPrice
+    <table>
+        @foreach (var ItemModel in Model)
+        {
+            <tr>
+                <td>@ItemModel.Id - </td>
+                <td> @ItemModel.Title</td>
+            </tr>
 
-        Being sold by @Model.UsrId
-
-        <p>@Model.StartDate</p>
-    </div>
+        }
+    </table>
 </body>
 </html>
