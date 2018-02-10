@@ -9,12 +9,14 @@
     <table>
         @foreach (var ItemModel in Model)
         {
-            <tr>
-                <td>@ItemModel.Id - </td>
-                <td> @ItemModel.Title</td>
-            </tr>
+        <tr>
+            <td>@ItemModel.Id - </td>
+            <td> @ItemModel.Title</td>
+            <td><a asp-action="ViewItem" asp-route-id="@ItemModel.Id">Details</a></td>
+        </tr>
 
         }
+        <a asp-action="Create">Create Item</a>
     </table>
 </body>
 </html>

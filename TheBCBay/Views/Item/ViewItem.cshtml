@@ -1,0 +1,18 @@
+﻿@model TheBCBay.Models.ItemModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>@Model.Title</h1>
+        <h2>@Model.Id</h2>
+        <h3>@Model.Description</h3>
+        <div>Started at: @Model.StartDate</div>
+        <div>Ends by: @Model.EndTime</div>
+        <div>Current price is: @Model.CurrentPrice</div>
+        <a asp-action="Display">Back to list</a>
+    </div>
+</body>
+</html>

@@ -10,5 +10,6 @@ namespace TheBCBay.Services
     {
         IEnumerable<ItemModel> GetAll();
         ItemModel Get(int id);
+        ItemModel Add(ItemModel newItem);
     }
 }

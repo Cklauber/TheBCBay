@@ -13,9 +13,9 @@ namespace TheBCBay.Services
         {
             _items = new List<ItemModel>
             {
-             new ItemModel{Id = 1, Title = "Random Stuff", Description = "We are selling this random stuff", CurrentPrice = 15, TopPrice = 50, LowPrice = 10, UsrId = 1, StartDate = DateTime.Now, EndTime = DateTime.Now},
-            new ItemModel{Id = 2, Title = "Another Random Stuff", Description = "We are selling this random stuff", CurrentPrice = 15, TopPrice = 50, LowPrice = 10, UsrId = 1, StartDate = DateTime.Now, EndTime = DateTime.Now},
-            new ItemModel{Id = 3, Title = "Even more Random Stuff", Description = "We are selling this random stuff", CurrentPrice = 15, TopPrice = 50, LowPrice = 10, UsrId = 1, StartDate = DateTime.Now, EndTime = DateTime.Now}
+             new ItemModel{Id = 1, Title = "Random Stuff", Description = "We are selling this random stuff", CurrentPrice = 15, TopPrice = 50, LowPrice = 10, StartDate = DateTime.Now, EndTime = DateTime.Now},
+            new ItemModel{Id = 2, Title = "Another Random Stuff", Description = "We are selling this random stuff", CurrentPrice = 15, TopPrice = 50, LowPrice = 10, StartDate = DateTime.Now, EndTime = DateTime.Now},
+            new ItemModel{Id = 3, Title = "Even more Random Stuff", Description = "We are selling this random stuff", CurrentPrice = 15, TopPrice = 50, LowPrice = 10, StartDate = DateTime.Now, EndTime = DateTime.Now}
             };
         }
 
@@ -27,6 +27,15 @@ namespace TheBCBay.Services
         public ItemModel Get(int id)
         {
             return _items.FirstOrDefault(r=> r.Id == id);
+        }
+
+        public ItemModel Add(ItemModel newItem)
+        {
+            newItem.Id = _items.Max(r => r.Id) + 1;
+            newItem.CurrentPrice = newItem.TopPrice;
+            newItem.StartDate = DateTime.Now;
+            _items.Add(newItem);
+            return newItem;
         }
     }
 }
