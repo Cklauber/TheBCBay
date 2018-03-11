@@ -8,6 +8,7 @@ namespace TheBCBay.CompositeModel
 {
     public class ItemEditModel
     {
+        public int Id { get; set; }
         [Required, MaxLength(25)]
         public string Title { get; set; }
         [Required, MinLength(25), MaxLength(1000)]
@@ -27,5 +28,8 @@ namespace TheBCBay.CompositeModel
         [Required]
         [Display(Name = "End time"), DataType(DataType.DateTime)]
         public DateTime EndTime { get; set; }
+
+        [Required]
+        public bool Active { get; set; }
     }
 }

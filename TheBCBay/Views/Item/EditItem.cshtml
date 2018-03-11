@@ -1,0 +1,38 @@
+﻿@model TheBCBay.Models.ItemModel
+
+<form method="post">
+
+    <div>
+        @Model.Id<br /><br />
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label asp-for="Description"></label>
+        <input asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label asp-for="TopPrice"></label>
+        <input asp-for="TopPrice" />
+        <span asp-validation-for="TopPrice"></span>
+    </div>
+    <div>
+        <label asp-for="LowPrice"></label>
+        <input asp-for="LowPrice" />
+        <span asp-validation-for="LowPrice"></span>
+    </div>
+    <div>
+        <label asp-for="EndTime"></label>
+        <input asp-for="EndTime" />
+        <span asp-validation-for="EndTime"></span>
+    </div>
+    <div>
+        <label asp-for="Active"></label>
+        <input asp-for="Active" />
+        <span asp-validation-for="Active"></span>
+    </div>
+
+    <input type="submit" name="save" value="Save" />
+</form>

@@ -20,6 +20,7 @@ namespace TheBCBay.Controllers
 
         }
         // GET: /<controller>/
+        
         public IActionResult Display()
         {
             var model = _itemData.GetAll();
@@ -29,12 +30,53 @@ namespace TheBCBay.Controllers
         public IActionResult ViewItem(int id)
         {
             var model = _itemData.Get(id);
-            if(model == null)
+            if(model == null || model.Active == false)
+            {
+                return RedirectToAction(nameof(Display));
+            }
+
+            return View(model);
+        }
+
+        /*
+         * TODO: Only get and post if it is the user who created.
+         */
+        [HttpGet]
+        public IActionResult EditItem(int id)
+        {
+            var model = _itemData.Get(id);
+            if (model == null)
             {
                 return RedirectToAction(nameof(Display));
             }
             return View(model);
         }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult EditItem(ItemEditModel model)
+        {
+            //var model = _itemData.Get(id);
+            if (ModelState.IsValid)
+            {
+                ItemModel updateItem = _itemData.Get(model.Id);
+                updateItem.Title = model.Title;
+                updateItem.Description = model.Description;
+                updateItem.TopPrice = model.TopPrice;
+                updateItem.LowPrice = model.LowPrice;
+                updateItem.EndTime = model.EndTime;
+                updateItem.Active = model.Active;
+                _itemData.Update(updateItem);
+
+                return RedirectToAction(nameof(ViewItem), new { id = model.Id });
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
+
 
         [HttpGet]
         public IActionResult Create()
@@ -51,6 +93,8 @@ namespace TheBCBay.Controllers
             newItem.TopPrice = model.TopPrice;
             newItem.LowPrice = model.LowPrice;
             newItem.EndTime = model.EndTime;
+            newItem.StartDate = DateTime.Now;
+            newItem.Active = true;
             _itemData.Add(newItem);
 
             return RedirectToAction(nameof(ViewItem), new { id = newItem.Id });

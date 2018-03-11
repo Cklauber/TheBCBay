@@ -11,8 +11,8 @@ using TheBCBay.Data;
 namespace TheBCBay.Migrations
 {
     [DbContext(typeof(TheBCBayDBContext))]
-    [Migration("20180213004750_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20180311013233_IsActive")]
+    partial class IsActive
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,10 +21,12 @@ namespace TheBCBay.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TheBCBay.Models.Item", b =>
+            modelBuilder.Entity("TheBCBay.Models.ItemModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Active");
 
                     b.Property<decimal>("CurrentPrice");
 

@@ -15,6 +15,7 @@ namespace TheBCBay.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Active = table.Column<bool>(nullable: false),
                     CurrentPrice = table.Column<decimal>(nullable: false),
                     Description = table.Column<string>(maxLength: 1000, nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),

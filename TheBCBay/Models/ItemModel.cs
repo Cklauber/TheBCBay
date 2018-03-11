@@ -31,5 +31,8 @@ namespace TheBCBay.Models
         public DateTime EndTime { get; set; }
         //Add Photos
 
+        [Required]
+        public bool Active { get; set; }
+
     }
 }
