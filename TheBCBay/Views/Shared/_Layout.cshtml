@@ -36,10 +36,18 @@
                     <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
+                @*if (username == false){*@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item"><a asp-area="" asp-controller="" asp-action="LogIn">Log In</a></li>
                     <li class="nav-item"><a asp-area="" asp-controller="" asp-action="Register">Register</a></li>
                 </ul>
+                @*}else
+                {
+                    <ul>
+                        <li> model.Username</li>
+                    </ul>
+                }*@
+
             </div>
         </div>
     </nav>

@@ -49,7 +49,7 @@ namespace TheBCBay
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=item}/{action=Display}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

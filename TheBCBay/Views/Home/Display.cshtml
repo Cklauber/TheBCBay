@@ -1,0 +1,24 @@
+﻿@model IEnumerable<TheBCBay.Models.ItemModel>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>This is our sample</title>
+</head>
+<body>
+    <table>
+        @foreach (var ItemModel in Model)
+        {
+            <tr>
+                <td>@ItemModel.Id - </td>
+                <td> @ItemModel.Title</td>
+                <td><a asp-action="ViewItem" asp-route-id="@ItemModel.Id">Details</a></td>
+                <td><a asp-action="EditItem" asp-route-id="@ItemModel.Id">Edit</a></td>
+            </tr>
+
+        }
+
+    </table>
+    <a asp-action="Create">Create Item</a>
+</body>
+</html>
