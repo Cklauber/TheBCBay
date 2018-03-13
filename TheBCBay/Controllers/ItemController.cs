@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheBCBay.CompositeModel;
 using TheBCBay.Models;
@@ -20,7 +21,7 @@ namespace TheBCBay.Controllers
 
         }
         // GET: /<controller>/
-        
+        [Authorize]
         public IActionResult Display()
         {
             var model = _itemData.GetAll();
