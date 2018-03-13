@@ -3,22 +3,28 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>This is our sample</title>
 </head>
 <body>
-    <table>
-        @foreach (var ItemModel in Model)
+    <div class="container-fluid">
+        <table class="table table-hover table-bordered table-responsive" style="width:100%">
+            <thead class="bg-danger">
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            @foreach (var ItemModel in Model)
         {
             <tr>
-                <td>@ItemModel.Id - </td>
+                <td>@ItemModel.Id </td>
                 <td> @ItemModel.Title</td>
                 <td><a asp-action="ViewItem" asp-route-id="@ItemModel.Id">Details</a></td>
                 <td><a asp-action="EditItem" asp-route-id="@ItemModel.Id">Edit</a></td>
             </tr>
 
-        }
+    }
 
-    </table>
-    <a asp-action="Create">Create Item</a>
+        </table>
+    </div>
 </body>
 </html>

@@ -1,0 +1,21 @@
+﻿@model TheBCBay.Models.ItemModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Title: @Model.Title</h1>
+        <h2>#: @Model.Id</h2>
+        <h3>Description: @Model.Description</h3>
+        <div style="margin-bottom:20px">@if (Model.Active)
+        { <h3 style="color:green">Active</h3> }
+        else {  <h3 style="color:red">Finished</h3>}</div>
+        <div style="margin-bottom:5px">Started at: @Model.StartDate</div>
+        <div style="margin-bottom:5px">Ends by: @Model.EndTime</div>
+        <div style="margin-bottom:5px">Current price is: @Model.CurrentPrice</div>
+            <a asp-action="Index" style="color:white" class="btn btn-danger">Back to list</a>
+    </div>
+</body>
+</html>

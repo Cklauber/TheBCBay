@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TheBCBay.CompositeModel;
 using TheBCBay.Models;
 using TheBCBay.Services;
 
@@ -25,6 +26,51 @@ namespace TheBCBay.Controllers
         {
             var model = _itemData.GetAll();
             return View(model);
+        }
+
+        public IActionResult ViewItem(int id)
+        {
+            var model = _itemData.Get(id);
+            if (model == null || model.Active == false)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditItem(int id)
+        {
+            var model = _itemData.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult EditItem(ItemEditModel model)
+        {
+            //var model = _itemData.Get(id);
+            if (ModelState.IsValid)
+            {
+                ItemModel updateItem = _itemData.Get(model.Id);
+                updateItem.Title = model.Title;
+                updateItem.Description = model.Description;
+                updateItem.TopPrice = model.TopPrice;
+                updateItem.LowPrice = model.LowPrice;
+                updateItem.EndTime = model.EndTime;
+                updateItem.Active = model.Active;
+                _itemData.Update(updateItem);
+
+                return RedirectToAction(nameof(ViewItem), new { id = model.Id });
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult About()
