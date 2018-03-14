@@ -11,9 +11,10 @@ using TheBCBay.Data;
 namespace TheBCBay.Migrations
 {
     [DbContext(typeof(TheBCBayDBContext))]
-    partial class TheBCBayDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180313234357_AddingUser")]
+    partial class AddingUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

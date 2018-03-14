@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Manage";
+}
+
+<h2>Manage</h2>
+
+@model IEnumerable<TheBCBay.Models.ItemModel>
+
+
+<table>
+    @foreach (var ItemModel in Model)
+    {
+        <tr>
+            <td>@ItemModel.Id - </td>
+            <td> @ItemModel.Title</td>
+            <td><a asp-controller="Item" asp-action="ViewItem" asp-route-id="@ItemModel.Id">Details</a></td>
+            <td><a asp-controller="Item" asp-action="EditItem" asp-route-id="@ItemModel.Id">Edit</a></td>
+        </tr>
+
+    }
+
+</table>
+<a asp-controller="Item" asp-action="Create">Create Item</a>
+
+
