@@ -1,11 +1,6 @@
 ﻿@model IEnumerable<TheBCBay.Models.ItemModel>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>This is our sample</title>
-</head>
-<body>
     <table>
         @foreach (var ItemModel in Model)
         {
@@ -13,42 +8,9 @@
                 <td>@ItemModel.Id - </td>
                 <td> @ItemModel.Title</td>
                 <td><a asp-action="ViewItem" asp-route-id="@ItemModel.Id">Details</a></td>
-                <td><a asp-action="EditItem" asp-route-id="@ItemModel.Id">Edit</a></td>
             </tr>
 
         }
 
     </table>
     <a asp-action="Create">Create Item</a>
-
-
-
-    @if (User.Identity.IsAuthenticated)
-    {
-        foreach(var identity in User.Identities)
-        {
-            <h3>@identity.Name</h3>
-            <ul>
-                @foreach(var claim in identity.Claims)
-                {
-                    <li>@claim.Type - @claim.Value</li>
-
-                }
-            </ul>
-
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>

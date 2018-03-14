@@ -12,5 +12,6 @@ namespace TheBCBay.Services
         ItemModel Get(int id);
         ItemModel Add(ItemModel newItem);
         ItemModel Update(ItemModel item);
+        IEnumerable<ItemModel> GetUsersItems(string user);
     }
 }

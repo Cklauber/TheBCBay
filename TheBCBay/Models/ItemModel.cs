@@ -29,10 +29,12 @@ namespace TheBCBay.Models
         [Required]
         [Display(Name ="End time"), DataType(DataType.DateTime)]
         public DateTime EndTime { get; set; }
-        //Add Photos
 
         [Required]
         public bool Active { get; set; }
+
+        [Required]
+        public string Owner { get; set; }
 
     }
 }

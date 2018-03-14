@@ -13,11 +13,16 @@
         <div>Ends by: @Model.EndTime</div>
         <div>Current price is: @Model.CurrentPrice</div>
         <div>
-        
 
-        
+
+
         </div>
         <a asp-action="Display">Back to list</a>
+        @*If the user own the Item, they will be able to see the edit button.*@
+        @if (User.Identity.IsAuthenticated && Model.Owner == User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value)
+        {
+        <a asp-action="EditItem" asp-route-id="@Model.Id">Edit</a>
+        }
     </div>
 </body>
 </html>

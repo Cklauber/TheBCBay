@@ -15,32 +15,33 @@ namespace TheBCBay.Services
         {
             _context = context;
         }
-
         public ItemModel Add(ItemModel newItem)
         {
             _context.Items.Add(newItem);
             _context.SaveChanges();
             return newItem;
         }
-
         public ItemModel Get(int id)
         {
             ItemModel myItem = _context.Items.FirstOrDefault(r => r.Id == id);
             UpdateCurrentPrice(myItem);
             return myItem;
         }
-
         public IEnumerable<ItemModel> GetAll()
         {
             return _context.Items.OrderBy(r => r.Title).Where(item => item.Active == true);
         }
-
+        public IEnumerable<ItemModel> GetUsersItems(string user)
+        {
+            return _context.Items.OrderBy(r => r.Title).Where(item => item.Owner == user);
+        }
         public ItemModel Update(ItemModel item)
         {
             _context.Attach(item).State = EntityState.Modified;
             _context.SaveChanges();
             return item;
         }
+        //The method below is to use my algorithm to update the price.
         public void UpdateCurrentPrice(ItemModel myItem)
         {
             var endMinusStart = myItem.EndTime.Subtract(myItem.StartDate).TotalMinutes;
